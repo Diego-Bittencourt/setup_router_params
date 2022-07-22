@@ -21,10 +21,13 @@
 
 <script>
 import { ref, inject } from 'vue';
+import { useRouter } from 'vue-router';
+//there is a difference between useRoute and useRouter
 
 export default {
   setup() {
     const addProduct = inject('addProduct');
+    const router = useRouter();
 
     const enteredTitle = ref('');
     const enteredPrice = ref(null);
@@ -36,6 +39,7 @@ export default {
         description: enteredDescription,
         price: enteredPrice,
       });
+      router.push("/products");
     }
 
     return {
